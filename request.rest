@@ -1,1 +1,1 @@
-GET http://localhost:8080/pai
+GET http://localhost:8080/vendor/1234

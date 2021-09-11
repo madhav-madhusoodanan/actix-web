@@ -1,11 +1,22 @@
 use actix_web::{get, web, HttpResponse, Responder};
 
 pub mod paintings;
+pub mod designers;
+pub mod vendors;
 
 // this function could be located in a different module
-pub fn config(cfg: &mut web::ServiceConfig) {
-    cfg.service(paintings::index)
-        .service(app);
+pub fn config(config: &mut web::ServiceConfig) {
+    config
+        .service(paintings::index())
+        .service(designers::index())
+        .service(vendors::index())
+        .service(app)
+        .service(root);
+}
+
+#[get("/")]
+async fn root() -> impl Responder {
+    HttpResponse::Ok().body("Hello world!")
 }
 
 #[get("/config")]
