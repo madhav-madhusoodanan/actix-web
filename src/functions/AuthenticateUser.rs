@@ -8,5 +8,5 @@ pub fn AuthenticateUser(bearer: String) -> Result<String, String> {
 
     // extract the user from the token, given the secret key
     // and check if the user is available 
-    let claim: BTreeMap<String, String> = bearer.verify_with_key(&key)
+    let claim: BTreeMap<String, String> = bearer.verify_with_key(&key);
 }

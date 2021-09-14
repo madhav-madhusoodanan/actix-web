@@ -1,4 +1,17 @@
 use actix_web::{Scope, post, get, web,  HttpResponse, Responder};
+use mongodb::bson::doc;
+use crate::config::index::key_function as gen;
+// use hmac::{Hmac, NewMac};
+// use sha2::Sha256;
+// use futures::stream::TryStreamExt;
+
+use serde::Deserialize;
+
+#[derive(Deserialize)]
+struct Body {
+    username: String,
+}
+
 
 #[get("/")]
 async fn root() -> impl Responder {
@@ -27,14 +40,15 @@ async fn painting(params: web::Path<String>) -> impl Responder {
 }
 
 #[post("/{id}")]
-async fn order(params: web::Path<String>) -> impl Responder {
+async fn order(params: web::Path<String>, body: web::Json<Body>) -> impl Responder {
 
     // first authenticate the user
     // then get the object
     // check if the order request is valid (might not be necessary)
     // then return the object (or) redirect to the objects page
-
-    HttpResponse::Ok().body(format!("Hello this is paintings id:{} !", params.0))
+    
+    let username = &body.username;
+    HttpResponse::Ok().body(format!("Hello this is paintings id: {} and your name is {} !", params.0, username))
 }
 
 // this function could be located in a different module

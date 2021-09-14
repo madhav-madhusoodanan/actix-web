@@ -1,0 +1,117 @@
+madhav@pop-os:/media/madhav/TOSHIBA EXT/Project_work/kaladhaar/docker/projects/kaladhaar_backend$ cargo run   Compiling kaladhaar_backend v0.1.0 (/media/madhav/TOSHIBA EXT/Project_work/kaladhaar/docker/projects/kaladhaar_backend)
+warning: unused import: `crate::config::index::key_function as gen`
+ --> src/routes/paintings.rs:3:5
+  |
+3 | use crate::config::index::key_function as gen;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `bson::oid::ObjectId`
+ --> src/db/Object.rs:2:5
+  |
+2 | use bson::oid::ObjectId;
+  |     ^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `bson::oid::ObjectId`
+ --> src/db/User.rs:3:5
+  |
+3 | use bson::oid::ObjectId;
+  |     ^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `options::FindOptions`
+ --> src/db/User.rs:4:72
+  |
+4 | use mongodb::{Client, options::ClientOptions, error::Error, bson::doc, options::FindOptions};
+  |                                                                        ^^^^^^^^^^^^^^^^^^^^
+
+warning: variable does not need to be mutable
+  --> src/db/Object.rs:17:9
+   |
+17 |     let mut client: Client = Client::with_options(client_options)?;
+   |         ----^^^^^^
+   |         |
+   |         help: remove this `mut`
+   |
+   = note: `#[warn(unused_mut)]` on by default
+
+warning: unused variable: `object`
+  --> src/db/Object.rs:20:9
+   |
+20 |     let object = db.collection::<Document>("object");
+   |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_object`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: function is never used: `key_function`
+ --> src/config/index.rs:4:8
+  |
+4 | pub fn key_function() -> Hmac<Sha256> {
+  |        ^^^^^^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` on by default
+
+warning: enum is never used: `BackendError`
+  --> src/config/index.rs:10:10
+   |
+10 | pub enum BackendError {
+   |          ^^^^^^^^^^^^
+
+warning: function is never used: `getObjects`
+  --> src/db/Object.rs:13:14
+   |
+13 | pub async fn getObjects() -> Result<Vec<Object>, Error> {
+   |              ^^^^^^^^^^
+
+warning: constant `url` should have an upper case name
+ --> src/config/index.rs:9:11
+  |
+9 | pub const url: &str = "mongodb+srv://madhav:madhav@cluster0.tlg4k.mongodb.net/";
+  |           ^^^ help: convert the identifier to upper case: `URL`
+  |
+  = note: `#[warn(non_upper_case_globals)]` on by default
+
+warning: module `Object` should have a snake case name
+ --> src/db.rs:1:9
+  |
+1 | pub mod Object;
+  |         ^^^^^^ help: convert the identifier to snake case (notice the capitalization): `object`
+  |
+  = note: `#[warn(non_snake_case)]` on by default
+
+warning: module `User` should have a snake case name
+ --> src/db.rs:2:9
+  |
+2 | pub mod User;
+  |         ^^^^ help: convert the identifier to snake case (notice the capitalization): `user`
+
+warning: function `getObjects` should have a snake case name
+  --> src/db/Object.rs:13:14
+   |
+13 | pub async fn getObjects() -> Result<Vec<Object>, Error> {
+   |              ^^^^^^^^^^ help: convert the identifier to snake case: `get_objects`
+
+warning: constant `url` should have an upper case name
+  --> src/db/Object.rs:15:11
+   |
+15 |     const url: &str = "mongodb+srv://madhav:madhav@cluster0.tlg4k.mongodb.net/";
+   |           ^^^ help: convert the identifier to upper case: `URL`
+
+warning: function `getUsers` should have a snake case name
+  --> src/db/User.rs:22:14
+   |
+22 | pub async fn getUsers() -> Result<Vec<User>, Error> {
+   |              ^^^^^^^^ help: convert the identifier to snake case: `get_users`
+
+warning: function `addUsers` should have a snake case name
+  --> src/db/User.rs:36:14
+   |
+36 | pub async fn addUsers(name: &String, password: &String) -> Result<(), Error> {
+   |              ^^^^^^^^ help: convert the identifier to snake case: `add_users`
+
+warning: 16 warnings emitted
+
+    Finished dev [unoptimized + debuginfo] target(s) in 1m 55s
+     Running `target/debug/kaladhaar_backend`
+thread 'actix-rt:worker:1' panicked at 'there is no reactor running, must be called from the context of a Tokio 1.x runtime', /home/madhav/.cargo/registry/src/github.com-1ecc6299db9ec823/trust-dns-resolver-0.20.3/src/name_server/connection_provider.rs:345:25
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
