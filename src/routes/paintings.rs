@@ -36,7 +36,7 @@ async fn painting(params: web::Path<String>) -> impl Responder {
 
     // get a specific object
 
-    HttpResponse::Ok().body(format!("Hello this is paintings id:{} !", params.0))
+    HttpResponse::Ok().body(format!("Hello this is paintings id:{:#?} !", params.get(..)))
 }
 
 #[post("/{id}")]
@@ -48,7 +48,7 @@ async fn order(params: web::Path<String>, body: web::Json<Body>) -> impl Respond
     // then return the object (or) redirect to the objects page
     
     let username = &body.username;
-    HttpResponse::Ok().body(format!("Hello this is paintings id: {} and your name is {} !", params.0, username))
+    HttpResponse::Ok().body(format!("Hello this is paintings id: {:#?} and your name is {} !", params.get(..), username))
 }
 
 // this function could be located in a different module

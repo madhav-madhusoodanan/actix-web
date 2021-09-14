@@ -34,7 +34,7 @@ async fn new(body: web::Json<Body>) -> impl Responder {
 //     HttpResponse::Ok().body(format!("Hello this is designer id:{} !", params.0))
 // }
 
-#[get("/")]
+#[get("/users")]
 async fn dummy() -> impl Responder {
 
     let users = match getUsers().await {

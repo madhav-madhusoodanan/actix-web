@@ -1,7 +1,7 @@
-POST http://localhost:8080/designers/new
+GET http://localhost:8080/designers/users
 Content-Type: application/json
 
 {
-    "name": "yoyo",
-    "password": "hehe"
+    "name": "madhav",
+    "password": "mypass"
 }

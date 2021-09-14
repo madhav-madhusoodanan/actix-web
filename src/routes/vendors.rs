@@ -7,7 +7,7 @@ async fn root() -> impl Responder {
 
 #[get("/{id}")]
 async fn vendor(params: web::Path<String>) -> impl Responder {
-    HttpResponse::Ok().body(format!("Hello this is vendor id:{} !", params.0))
+    HttpResponse::Ok().body(format!("Hello this is vendor id:{:#?} !", params.get(..)))
 }
 
 // this function could be located in a different module
